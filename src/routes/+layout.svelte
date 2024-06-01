@@ -20,6 +20,16 @@
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+
+	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	import Navigation from '$lib/Navigation.svelte';
+	import data from './data';
+
+	let tabs = data.tabs;
+
+	initializeStores();
 </script>
+
+<Drawer><Navigation {tabs} /></Drawer>
 
 <slot />

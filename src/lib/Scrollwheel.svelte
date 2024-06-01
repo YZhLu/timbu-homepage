@@ -15,16 +15,16 @@
 <div class="flex flex-col items-center gap-1.5">
 	{#each Array.from({ length }) as _, i}
 		{#if y === 0}
-			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-7={y === i} class:!bg-black={y === i} />
+			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-7={y === i} class:!bg-surface-900-50-token={y === i} />
 			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-6={y === i} />
 			<div class="w-5 h-[3px] bg-gray-400 rounded" />
 		{:else if y === h - 1}
 			<div class="w-5 h-[3px] bg-gray-400 rounded" />
 			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-6={y === i} />
-			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-7={y === i} class:!bg-black={y === i} />
+			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-7={y === i} class:!bg-surface-900-50-token={y === i} />
 		{:else}
 			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-6={y === i} />
-			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-7={y === i} class:!bg-black={y === i} />
+			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-7={y === i} class:!bg-surface-900-50-token={y === i} />
 			<div class="w-5 h-[3px] bg-gray-400 rounded" class:w-6={y === i} />
 		{/if}
 		<!-- <div class="w-5 h-[3px] bg-gray-400 rounded" class:w-6={z === i + 1} /> -->

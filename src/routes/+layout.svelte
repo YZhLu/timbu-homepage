@@ -21,7 +21,10 @@
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
-	import { initializeStores, Drawer, getDrawerStore } from '@skeletonlabs/skeleton';
+	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import { autoModeWatcher } from '@skeletonlabs/skeleton';
+
+	import { initializeStores, Drawer } from '@skeletonlabs/skeleton';
 	import Navigation from '$lib/Navigation.svelte';
 	import data from './data';
 
@@ -29,7 +32,8 @@
 
 	initializeStores();
 </script>
-
+<svelte:head>{@html '<script>(' + autoModeWatcher.toString() + ')();</script>'}</svelte:head>
 <Drawer><Navigation {tabs} /></Drawer>
+<span class="absolute top-[72px] md:top-7 right-4 md:right-6 justify-end"><LightSwitch /></span>
 
 <slot />

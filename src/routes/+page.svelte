@@ -17,6 +17,8 @@
 	let y: any = 0;
 	let s: number = 0;
 
+	const videoSource = '/video.webm';
+
 	function getY() {
 		// console.log(elemCarousel.scrollTop,elemCarousel.scrollTop/elemCarousel.scrollHeight)
 		// console.log(elemCarousel.scrollHeight/tabs.length, y, y/elemCarousel.scrollHeight)
@@ -61,7 +63,7 @@
 <div class="card bg-surface-50-900-token rounded-none h-screen grid grid-cols-[auto_1fr] w-full">
 	<AppRail background="bg-surface-50-900-token" class="invisible md:!visible" width="w-0 md:w-20">
 		<svelte:fragment slot="lead">
-			<AppRailAnchor href="/">
+			<AppRailAnchor data-sveltekit-reload href="/">
 				<span class="flex justify-center"><Avatar src="/timbu.png" width="w-11" /></span>
 			</AppRailAnchor>
 		</svelte:fragment>
@@ -126,7 +128,9 @@
 
 	<div class="grid place-content-center place-items-center">
 		<div class="md:hidden flex justify-between items-center w-screen py-1 px-4">
-			<span class="flex justify-center"><Avatar src="/timbu.png" width="w-8" /></span>
+			<a data-sveltekit-reload href="/" class="flex justify-center"
+				><Avatar src="/timbu.png" width="w-8" /></a
+			>
 			<!-- <AppRailAnchor href="https://github.com/" target="_blank" title="GitHub"> -->
 			<div class="flex gap-2">
 				<span class="flex justify-center items-center">
@@ -168,11 +172,21 @@
 			<div
 				bind:this={elemCarousel}
 				on:scroll={getY}
-				class="[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] h-screen flex flex-col snap-y scroll-py-4 snap-mandatory scroll-smooth gap-4 overflow-y-auto px-4 py-10"
+				class="[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] h-[calc(100vh_-_56px)] md:h-screen flex flex-col snap-y scroll-py-4 snap-mandatory scroll-smooth gap-4 overflow-y-auto px-4 py-10"
 			>
-				{#each tabs as tab}
-					<div id={tab} class="snap-start shrink-0 card h-full md:w-full text-center">
-						{s}
+				{#each tabs as tab, i}
+					<div id={tab} class="snap-start shrink-0 card h-full md:w-full text-center overflow-hidden">
+						<!-- {s} -->
+						<!-- <div class="w-screen h-screen overflow-hidden z-[-1] absolute"> -->
+							{#if i!==0}
+								{tab}
+							{:else}
+							<video autoplay loop muted class="!rounded-2xl h-full w-full object-fill inset-0">
+								<source type="video/webm" src={videoSource} />
+							</video>
+							{/if}
+						
+						<!-- </div> -->
 					</div>
 				{/each}
 			</div>
